@@ -12,8 +12,8 @@
                     <br>
                     <div class="container columns is-centered">
                         <div>
-                            <!-- HTML generated using hilite.me -->
-<div style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"
+<div
+style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"
 >
 <table>
   <tr>
@@ -39,32 +39,44 @@
 18
 19
 20
-21</pre>
+21
+22
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
       <pre
         style="margin: 0; line-height: 125%"
-      ><span style="color: #008000; font-weight: bold">var</span> Fn <span style="color: #666666">=</span> {
-        <span style="color: #408080; font-style: italic">// Valida el rut con su cadena completa &quot;XXXXXXXX-X&quot;</span>
-        validaRut <span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span> (rutCompleto) {
-        <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">!</span><span style="color: #BB6688">/^[0-9]+[-|‐]{1}[0-9kK]{1}$/</span>.test( rutCompleto ))
-          <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">false</span>;
-        <span style="color: #008000; font-weight: bold">var</span> tmp 	<span style="color: #666666">=</span> rutCompleto.split(<span style="color: #BA2121">&#39;-&#39;</span>);
-        <span style="color: #008000; font-weight: bold">var</span> digv	<span style="color: #666666">=</span> tmp[<span style="color: #666666">1</span>]; 
-        <span style="color: #008000; font-weight: bold">var</span> rut 	<span style="color: #666666">=</span> tmp[<span style="color: #666666">0</span>];
-        <span style="color: #008000; font-weight: bold">if</span> ( digv <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;K&#39;</span> ) digv <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span> ;
-        <span style="color: #008000; font-weight: bold">return</span> (Fn.dv(rut) <span style="color: #666666">==</span> digv );
-  },
-        dv <span style="color: #666666">:</span> <span style="color: #008000; font-weight: bold">function</span>(T){
-            <span style="color: #008000; font-weight: bold">var</span> M<span style="color: #666666">=0</span>,S<span style="color: #666666">=1</span>;
-            <span style="color: #008000; font-weight: bold">for</span>(;T;T<span style="color: #666666">=</span><span style="color: #008000">Math</span>.floor(T<span style="color: #666666">/10</span>))
-                S<span style="color: #666666">=</span>(S<span style="color: #666666">+</span>T<span style="color: #666666">%10*</span>(<span style="color: #666666">9-</span>M<span style="color: #666666">++%6</span>))<span style="color: #666666">%11</span>;
-            <span style="color: #008000; font-weight: bold">return</span> S<span style="color: #666666">?</span>S<span style="color: #666666">-1:</span><span style="color: #BA2121">&#39;k&#39;</span>;
+      ><span style="color: #008000; font-weight: bold">function</span> readRut(rut) {
+  <span style="color: #008000; font-weight: bold">let</span> x <span style="color: #666666">=</span> rut.value.replace(<span style="color: #BA2121">&#39;.&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>).replace(<span style="color: #BA2121">&#39;.&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>).replace(<span style="color: #BA2121">&#39;-&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>)
+  <span style="color: #008000; font-weight: bold">if</span> (rut.value <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;&quot;</span>) {
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">false</span>;
+  } <span style="color: #008000; font-weight: bold">else</span> {
+    <span style="color: #008000; font-weight: bold">return</span> checkRut(x);
   }
 }
+<span style="color: #008000; font-weight: bold">function</span> checkRut(rut) {
+   <span style="color: #008000; font-weight: bold">var</span> digit <span style="color: #666666">=</span> rut.at(<span style="color: #666666">-1</span>);
+   <span style="color: #008000; font-weight: bold">var</span> body <span style="color: #666666">=</span> rut.substring(<span style="color: #666666">0</span>, rut.length <span style="color: #666666">-</span> <span style="color: #666666">1</span>);
+   <span style="color: #008000; font-weight: bold">if</span> (digit <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;K&#39;</span>) digit <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span>;
+   <span style="color: #008000; font-weight: bold">return</span> (checkDV(body) <span style="color: #666666">==</span> digit);
+}
+<span style="color: #008000; font-weight: bold">function</span> checkDV(t) {
+  <span style="color: #008000; font-weight: bold">var</span> m <span style="color: #666666">=</span> <span style="color: #666666">0</span>,
+    s <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
+  <span style="color: #008000; font-weight: bold">for</span> (; t; t <span style="color: #666666">=</span> <span style="color: #008000">Math</span>.floor(t <span style="color: #666666">/</span> <span style="color: #666666">10</span>))
+    s <span style="color: #666666">=</span> (s <span style="color: #666666">+</span> t <span style="color: #666666">%</span> <span style="color: #666666">10</span> <span style="color: #666666">*</span> (<span style="color: #666666">9</span> <span style="color: #666666">-</span> m<span style="color: #666666">++</span> <span style="color: #666666">%</span> <span style="color: #666666">6</span>)) <span style="color: #666666">%</span> <span style="color: #666666">11</span>;
+  <span style="color: #008000; font-weight: bold">return</span> s <span style="color: #666666">?</span> s <span style="color: #666666">-</span> <span style="color: #666666">1</span> <span style="color: #666666">:</span> <span style="color: #BA2121">&#39;k&#39;</span>;
+}
 
-<span style="color: #408080; font-style: italic">// Uso de la función</span>
-alert( Fn.validaRut(<span style="color: #BA2121">&#39;11111111-1&#39;</span>) <span style="color: #666666">?</span> <span style="color: #BA2121">&#39;Valido&#39;</span> <span style="color: #666666">:</span> <span style="color: #BA2121">&#39;inválido&#39;</span>);
+<span style="color: #008000; font-weight: bold">function</span> chileanRutVerifier(rut) {
+  readRut(rut);
+}
+
+module.exports <span style="color: #666666">=</span> chileanRutVerifier
 </pre>
     </td>
   </tr>
