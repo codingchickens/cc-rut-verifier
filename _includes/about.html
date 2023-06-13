@@ -11,83 +11,43 @@
                     <p>{{site.author-about}}</p>
                     <br>
                     <div class="container columns is-centered">
-                        <div>
-<!-- No tratar de indentar, ya que pierde el formato -->                          
-<div
-style="background: #f8f8f8; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"
->
-<table>
-  <tr>
-    <td>
-      <pre style="margin: 0; line-height: 125%">
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre>
-    </td>
-    <td>
-      <pre
-        style="margin: 0; line-height: 125%"
-      ><span style="color: #008000; font-weight: bold">function</span> readRut(rut) {
-  <span style="color: #008000; font-weight: bold">let</span> x <span style="color: #666666">=</span> rut.value.replace(<span style="color: #BA2121">&#39;.&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>).replace(<span style="color: #BA2121">&#39;.&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>).replace(<span style="color: #BA2121">&#39;-&#39;</span>, <span style="color: #BA2121">&#39;&#39;</span>)
-  <span style="color: #008000; font-weight: bold">if</span> (rut.value <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;&quot;</span>) {
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000; font-weight: bold">false</span>;
-  } <span style="color: #008000; font-weight: bold">else</span> {
-    <span style="color: #008000; font-weight: bold">return</span> checkRut(x);
-  }
-}
-<span style="color: #008000; font-weight: bold">function</span> checkRut(rut) {
-   <span style="color: #008000; font-weight: bold">var</span> digit <span style="color: #666666">=</span> rut.at(<span style="color: #666666">-1</span>);
-   <span style="color: #008000; font-weight: bold">var</span> body <span style="color: #666666">=</span> rut.substring(<span style="color: #666666">0</span>, rut.length <span style="color: #666666">-</span> <span style="color: #666666">1</span>);
-   <span style="color: #008000; font-weight: bold">if</span> (digit <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;K&#39;</span>) digit <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;k&#39;</span>;
-   <span style="color: #008000; font-weight: bold">return</span> (checkDV(body) <span style="color: #666666">==</span> digit);
-}
-<span style="color: #008000; font-weight: bold">function</span> checkDV(t) {
-  <span style="color: #008000; font-weight: bold">var</span> m <span style="color: #666666">=</span> <span style="color: #666666">0</span>,
-    s <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
-  <span style="color: #008000; font-weight: bold">for</span> (; t; t <span style="color: #666666">=</span> <span style="color: #008000">Math</span>.floor(t <span style="color: #666666">/</span> <span style="color: #666666">10</span>))
-    s <span style="color: #666666">=</span> (s <span style="color: #666666">+</span> t <span style="color: #666666">%</span> <span style="color: #666666">10</span> <span style="color: #666666">*</span> (<span style="color: #666666">9</span> <span style="color: #666666">-</span> m<span style="color: #666666">++</span> <span style="color: #666666">%</span> <span style="color: #666666">6</span>)) <span style="color: #666666">%</span> <span style="color: #666666">11</span>;
-  <span style="color: #008000; font-weight: bold">return</span> s <span style="color: #666666">?</span> s <span style="color: #666666">-</span> <span style="color: #666666">1</span> <span style="color: #666666">:</span> <span style="color: #BA2121">&#39;k&#39;</span>;
-}
-
-<span style="color: #008000; font-weight: bold">function</span> chileanRutVerifier(rut) {
-  readRut(rut);
-}
-
-module.exports <span style="color: #666666">=</span> chileanRutVerifier
-</pre>
-    </td>
-  </tr>
-</table>
+<div>
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+    <pre><code class="language-javascript">
+      function readRut(rut) {
+        let x = rut.value.replace('.', '').replace('.', '').replace('-', '')
+        if (rut.value == "") {
+          return false;
+        } else {
+          return checkRut(x);
+        }
+      }
+      function checkRut(rut) {
+        var digit = rut.at(-1);
+        var body = rut.substring(0, rut.length - 1);
+        if (digit == 'K') digit = 'k';
+        return (checkDV(body) == digit);
+      }
+      function checkDV(t) {
+        var m = 0,
+          s = 1;
+        for (; t; t = Math.floor(t / 10))
+          s = (s + t % 10 * (9 - m++ % 6)) % 11;
+        return s ? s - 1 : 'k';
+      }
+      
+      function chileanRutVerifier(rut) {
+        readRut(rut);
+      }
+      
+      module.exports = chileanRutVerifier
 </div>
-
+                          </code></pre>                          
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </section>
+<script src="/assets/js/main.js"></script>
 
