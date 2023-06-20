@@ -13,6 +13,30 @@ layout: compress
   {% include contact.html %}
   <!--Footer begins here-->
   {% include footer.html %}
+
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <!-- <script src="https://unpkg.com/rut-verifier-cc" crossorigin="anonymous"></script> -->
+  <script src="../assets/js/rut-verifier-cc/index.js"></script>
+
+  <script>
+    function onKeyUp(){
+      let rut = document.querySelector("#rut").value;
+      let valid = verify(rut);
+
+      if(valid){
+        $("#valid").show();
+        $("#novalid").hide()
+      }
+      else{
+        $("#novalid").show();
+        $("#valid").hide()
+      }
+    }
+
+    jQuery(document).ready(function(){
+      $("#rut").on("keyup", onKeyUp)      
+    })
+  </script>
 </body>
 <script>
   var navItems = document.getElementsByClassName('navbar-item');

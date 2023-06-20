@@ -15,7 +15,7 @@
     <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
     <pre><code class="language-javascript">
       function readRut(rut) {
-        let x = rut.value.replace('.', '').replace('.', '').replace('-', '')
+        let x = rut.replace('.', '').replace('.', '').replace('-', '')
         if (rut.value == "") {
           return false;
         } else {
@@ -36,12 +36,9 @@
         return s ? s - 1 : 'k';
       }
       
-      function chileanRutVerifier(rut) {
+      function verify(rut) {
         readRut(rut);
       }
-      
-      module.exports = chileanRutVerifier
-</div>
                           </code></pre>                          
                         </div>
                     </div>

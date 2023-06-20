@@ -62,7 +62,7 @@ a.navbar-item.is-active {
     }
 }
 .title {
-    margin: auto 0.75rem!important;
+    margin: auto 0.75rem;
 }
 .subtitle {
     letter-spacing: 0.25rem;
@@ -352,4 +352,8 @@ a.navbar-item.is-active {
             display: inline-block;
         }
     }
+}
+
+.hidden {
+    display: none;
 }

@@ -1,13 +1,23 @@
 <section class="hero is-fullheight has-text-centered" id="hero">
-  <div class="hero-body">
+  <div class="hero-body" style="display: flex">
     <div class="container">
-      <h1 class="title has-text-white is-size-1 is-uppercase has-text-weight-bold">
-        {{site.title}}
-      </h1>
-      <h3 class="subtitle has-text-white-bis is-uppercase has-text-weight-medium is-marginless">
-        {{site.description}}
-      </h3>
-      <hr>
+      <div style="margin-bottom: 100px;">
+        <h1 class="title has-text-white is-size-1 is-uppercase has-text-weight-bold">
+          {{site.title}}
+        </h1>
+        <h3 class="subtitle has-text-white-bis is-uppercase has-text-weight-medium is-marginless">
+          {{site.description}}
+        </h3>
+        <hr>
+      </div>
+      <div class="subtitle is-uppercase has-text-weight-medium has-text-white" style="margin-bottom: 70px;">
+        <h5>Ingresa un RUT</h5><br>
+        <input type="text" id="rut" style ="padding:10px; border-radius:16px" placeholder="XXXXXXXX-X" aria-label="XXXXXXXX-X">
+        <div>
+          <span class="hidden" id="valid">Rut Válido</span>
+          <span class="hidden" id="novalid">Rut No Válido</span>
+        </div>
+    </div>      
       <a href="{{site.url}}{{site.baseurl}}/#about"
         class="button is-white is-rounded is-outlined is-uppercase has-text-weight-normal">¿Quieres ver la integración?</a>
       </a>
