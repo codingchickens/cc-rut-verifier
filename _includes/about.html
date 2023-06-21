@@ -13,32 +13,34 @@
                     <div class="container columns is-centered">
 <div>
     <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-    <pre><code class="language-javascript">
-      function readRut(rut) {
-        let x = rut.replace('.', '').replace('.', '').replace('-', '')
-        if (rut.value == "") {
-          return false;
-        } else {
-          return checkRut(x);
-        }
-      }
-      function checkRut(rut) {
-        var digit = rut.at(-1);
-        var body = rut.substring(0, rut.length - 1);
-        if (digit == 'K') digit = 'k';
-        return (checkDV(body) == digit);
-      }
-      function checkDV(t) {
-        var m = 0,
-          s = 1;
-        for (; t; t = Math.floor(t / 10))
-          s = (s + t % 10 * (9 - m++ % 6)) % 11;
-        return s ? s - 1 : 'k';
-      }
+    <pre><code>
+      // Rut Válido //
+      // Recibe formato con las siguientes combinaciones //
+
+      const rut = "91551241"
+      const valid = verify(rut) // true
+
+      const rut = "9155124-1"
+      const valid = verify(rut) // true
       
-      function verify(rut) {
-        readRut(rut);
-      }
+      const rut = "9.155.124-1"
+      const valid = verify(rut) // true
+
+      const rut = "9.1551241"
+      const valid = verify(rut) // true
+      
+      const rut = "9155.124-1"
+      const valid = verify(rut) // true
+
+
+      // Rut No Válido //
+      // Otros formatos no son válidos //
+
+      const invalidrut = "9.155..124-1"
+      const valid = verify(invalidrut) // false
+
+      const invalidrut = ".9155.124--1"
+      const valid = verify(invalidrut) // false
                           </code></pre>                          
                         </div>
                     </div>
