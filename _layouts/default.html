@@ -21,7 +21,7 @@ layout: compress
   <script>
     function onKeyUp(){
       let rut = document.querySelector("#rut").value;
-      let valid = verify(rut);
+      let valid = CC.verify(rut);
 
       if(valid){
         $("#valid").show();

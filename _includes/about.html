@@ -18,29 +18,29 @@
       // Recibe formato con las siguientes combinaciones //
 
       const rut = "91551241"
-      const valid = verify(rut) // true
+      const valid = CC.verify(rut) // true
 
       const rut = "9155124-1"
-      const valid = verify(rut) // true
+      const valid = CC.verify(rut) // true
       
       const rut = "9.155.124-1"
-      const valid = verify(rut) // true
+      const valid = CC.verify(rut) // true
 
       const rut = "9.1551241"
-      const valid = verify(rut) // true
+      const valid = CC.verify(rut) // true
       
       const rut = "9155.124-1"
-      const valid = verify(rut) // true
+      const valid = CC.verify(rut) // true
 
 
       // Rut No Válido //
       // Otros formatos no son válidos //
 
       const invalidrut = "9.155..124-1"
-      const valid = verify(invalidrut) // false
+      const valid = CC.verify(invalidrut) // false
 
       const invalidrut = ".9155.124--1"
-      const valid = verify(invalidrut) // false
+      const valid = CC.verify(invalidrut) // false
                           </code></pre>                          
                         </div>
                     </div>
